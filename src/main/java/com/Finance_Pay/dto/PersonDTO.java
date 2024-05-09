@@ -5,7 +5,7 @@ import jakarta.annotation.Nonnull;
 public record PersonDTO(
 
         @Nonnull
-        int id,
+        Integer id,
         @Nonnull
         String name,
         @Nonnull

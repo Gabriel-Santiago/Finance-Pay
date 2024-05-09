@@ -1,6 +1,9 @@
 package com.Finance_Pay.model.persons;
 
 import com.Finance_Pay.dto.PersonDTO;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Person {
 
-    protected int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Integer id;
     protected String name;
     protected String city;
     protected String state;

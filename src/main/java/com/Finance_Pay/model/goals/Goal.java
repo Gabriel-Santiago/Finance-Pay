@@ -16,6 +16,7 @@ import java.util.Date;
 @Table(name = "goal")
 public class Goal {
 
+    private Integer id;
     private double value;
     private String name;
     private String description;
@@ -25,6 +26,7 @@ public class Goal {
     private FisicalPerson fisicalPerson;
 
     public Goal (GoalDTO goalDTO){
+        this.id = goalDTO.id();
         this.value = goalDTO.value();
         this.dayOfPurchase = goalDTO.dayOfPurchase();
         this.name = goalDTO.name();

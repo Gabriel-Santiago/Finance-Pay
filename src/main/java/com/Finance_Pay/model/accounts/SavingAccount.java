@@ -20,6 +20,7 @@ public class SavingAccount extends  Account{
     private FisicalPerson fisicalPerson;
 
     public SavingAccount (AccountDTO accountDTO){
+        this.id = accountDTO.id();
         this.accountNumber = accountDTO.accountNumber();
         this.balance = accountDTO.balance();
         this.fisicalPerson = getFisicalPerson();

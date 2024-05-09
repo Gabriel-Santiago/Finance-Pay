@@ -7,6 +7,8 @@ import java.util.Date;
 public record GoalDTO(
 
         @Nonnull
+        Integer id,
+        @Nonnull
         double value,
         @Nonnull
         String name,

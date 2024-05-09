@@ -25,6 +25,7 @@ public class CheckingAccount extends Account{
     private FisicalPerson fisicalPerson;
 
     public CheckingAccount (AccountDTO accountDTO){
+        this.id = accountDTO.id();
         this.accountNumber = accountDTO.accountNumber();
         this.balance = accountDTO.balance();
         this.legalPerson = getLegalPerson();

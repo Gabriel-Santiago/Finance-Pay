@@ -7,6 +7,8 @@ import java.util.Date;
 public record TransactionDTO(
 
         @Nonnull
+        Integer id,
+        @Nonnull
         double value,
         @Nonnull
         Date date,
