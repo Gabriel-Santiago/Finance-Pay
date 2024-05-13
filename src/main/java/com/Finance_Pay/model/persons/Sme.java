@@ -2,9 +2,10 @@ package com.Finance_Pay.model.persons;
 
 
 import com.Finance_Pay.dto.PersonDTO;
-import com.Finance_Pay.model.accounts.CheckingAccount;
-import com.Finance_Pay.model.accounts.SavingAccount;
-import jakarta.persistence.OneToOne;
+import com.Finance_Pay.model.expenses.Expense;
+import com.Finance_Pay.model.goals.Goal;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -17,14 +18,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "legalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"crn"})})
-public class LegalPerson extends Person {
+public class Sme extends Person {
 
     private long crn; // Company Registration Number
 
-    @OneToOne(mappedBy = "legalPersonCheckingAccount")
-    private CheckingAccount checkingAccount;
+    @OneToMany
+    private Goal goal;
 
-    public LegalPerson(PersonDTO personDTO){
+    @OneToMany
+    private Expense expense;
+
+    @ManyToOne
+    private FinancialConsultant financialConsultant;
+
+    public Sme(PersonDTO personDTO){
         this.id = personDTO.id();
         this.name = personDTO.name();
         this.city = personDTO.city();
@@ -33,6 +40,8 @@ public class LegalPerson extends Person {
         this.password = personDTO.password();
         this.phone = personDTO.phone();
         this.crn = getCrn();
-        this.checkingAccount = getCheckingAccount();
+        this.goal = getGoal();
+        this.expense = getExpense();
+        this.financialConsultant = getFinancialConsultant();
     }
 }

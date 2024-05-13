@@ -1,8 +1,7 @@
-package com.Finance_Pay.repository.goals;
+package com.Finance_Pay.repository.expenses;
 
 import com.Finance_Pay.enums.Type;
 import com.Finance_Pay.model.expenses.Expense;
-import com.Finance_Pay.model.goals.Goal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,11 +9,11 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface GoalRepository extends JpaRepository<GoalRepository, Integer> {
+public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
-    List<Goal> findByName(String name);
+    List<Expense> findByDate(Date date);
 
-    List<Goal> findByDayOfPurchase(Date dayOfPurchase);
+    List<Expense> findByName(String name);
 
     Expense findByType(Type type);
 

@@ -1,6 +1,6 @@
-package com.Finance_Pay.model.goals;
+package com.Finance_Pay.model.expenses;
 
-import com.Finance_Pay.dto.GoalDTO;
+import com.Finance_Pay.dto.ExpenseDTO;
 import com.Finance_Pay.enums.Type;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Sme;
@@ -22,16 +22,15 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "goal")
-public class Goal {
+@Table(name = "expense")
+public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private double value;
+    private Date date;
     private String name;
-    private String description;
-    private Date dayOfPurchase;
 
     @ManyToOne
     private FisicalPerson fisicalPerson;
@@ -42,12 +41,11 @@ public class Goal {
     @Enumerated(EnumType.ORDINAL)
     private Type type;
 
-    public Goal(GoalDTO goalDTO) {
-        this.id = goalDTO.id();
-        this.value = goalDTO.value();
-        this.dayOfPurchase = goalDTO.dayOfPurchase();
-        this.name = goalDTO.name();
-        this.description = goalDTO.description();
+    public Expense(ExpenseDTO expenseDTO) {
+        this.id = expenseDTO.id();
+        this.value = expenseDTO.value();
+        this.date = expenseDTO.date();
+        this.name = expenseDTO.name();
         this.fisicalPerson = getFisicalPerson();
         this.sme = getSme();
         this.type = getType();

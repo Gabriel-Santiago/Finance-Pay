@@ -4,7 +4,7 @@ import jakarta.annotation.Nonnull;
 
 import java.util.Date;
 
-public record TransactionDTO(
+public record ExpenseDTO(
 
         @Nonnull
         Integer id,
@@ -13,7 +13,6 @@ public record TransactionDTO(
         @Nonnull
         Date date,
         @Nonnull
-        String name,
-        String description
+        String name
 ) {
 }
