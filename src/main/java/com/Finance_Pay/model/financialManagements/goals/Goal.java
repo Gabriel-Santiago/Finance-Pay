@@ -1,35 +1,30 @@
-package com.Finance_Pay.model.goals;
+package com.Finance_Pay.model.financialManagements.goals;
 
-import com.Finance_Pay.dto.GoalDTO;
-import com.Finance_Pay.enums.Type;
+import com.Finance_Pay.dto.FinancialManagementDTO;
+import com.Finance_Pay.enums.TypeOfCosts;
+import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Sme;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "goal")
-public class Goal {
+public class Goal extends FinancialManagement {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private double value;
-    private String name;
     private String description;
     private Date dayOfPurchase;
 
@@ -40,16 +35,16 @@ public class Goal {
     private Sme sme;
 
     @Enumerated(EnumType.ORDINAL)
-    private Type type;
+    private TypeOfCosts typeOfCosts;
 
-    public Goal(GoalDTO goalDTO) {
-        this.id = goalDTO.id();
-        this.value = goalDTO.value();
-        this.dayOfPurchase = goalDTO.dayOfPurchase();
-        this.name = goalDTO.name();
-        this.description = goalDTO.description();
+    public Goal(FinancialManagementDTO financialManagementDTO) {
+        this.id = financialManagementDTO.id();
+        this.value = financialManagementDTO.value();
+        this.dayOfPurchase = getDayOfPurchase();
+        this.name = financialManagementDTO.name();
+        this.description = getDescription();
         this.fisicalPerson = getFisicalPerson();
         this.sme = getSme();
-        this.type = getType();
+        this.typeOfCosts = getTypeOfCosts();
     }
 }

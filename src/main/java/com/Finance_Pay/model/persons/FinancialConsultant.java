@@ -1,6 +1,7 @@
 package com.Finance_Pay.model.persons;
 
 import com.Finance_Pay.dto.PersonDTO;
+import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

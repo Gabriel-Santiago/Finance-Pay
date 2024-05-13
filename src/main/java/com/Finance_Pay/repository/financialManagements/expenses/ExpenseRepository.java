@@ -1,7 +1,7 @@
-package com.Finance_Pay.repository.expenses;
+package com.Finance_Pay.repository.financialManagements.expenses;
 
-import com.Finance_Pay.enums.Type;
-import com.Finance_Pay.model.expenses.Expense;
+import com.Finance_Pay.enums.TypeOfCosts;
+import com.Finance_Pay.model.financialManagements.expenses.Expense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +15,6 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
     List<Expense> findByName(String name);
 
-    Expense findByType(Type type);
+    Expense findByType(TypeOfCosts typeOfCosts);
 
 }

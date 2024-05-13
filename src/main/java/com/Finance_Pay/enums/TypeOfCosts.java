@@ -1,6 +1,6 @@
 package com.Finance_Pay.enums;
 
-public enum Type {
+public enum TypeOfCosts {
     HOUSING(0),
     FOOD(1),
     EDUCATION(2),
@@ -13,7 +13,7 @@ public enum Type {
 
     public final int value;
 
-    private Type(int value){
+    private TypeOfCosts(int value){
         this.value = value;
     }
 }

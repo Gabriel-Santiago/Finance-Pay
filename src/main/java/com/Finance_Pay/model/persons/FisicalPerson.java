@@ -1,18 +1,21 @@
 package com.Finance_Pay.model.persons;
 
 import com.Finance_Pay.dto.PersonDTO;
-import com.Finance_Pay.model.expenses.Expense;
-import com.Finance_Pay.model.goals.Goal;
-import jakarta.persistence.ManyToOne;
+import com.Finance_Pay.model.financialManagements.earnings.Earning;
+import com.Finance_Pay.model.financialManagements.expenses.Expense;
+import com.Finance_Pay.model.financialManagements.goals.Goal;
+import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @EqualsAndHashCode(callSuper = true)
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +30,9 @@ public class FisicalPerson extends Person {
 
     @OneToMany
     private Expense expense;
+
+    @OneToMany
+    private Earning earning;
 
     @ManyToOne
     private FinancialConsultant financialConsultant;
@@ -43,6 +49,7 @@ public class FisicalPerson extends Person {
         this.age = getAge();
         this.goal = getGoal();
         this.expense = getExpense();
+        this.earning = getEarning();
         this.financialConsultant = getFinancialConsultant();
     }
 }

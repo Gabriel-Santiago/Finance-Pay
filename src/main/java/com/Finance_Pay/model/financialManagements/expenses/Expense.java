@@ -1,36 +1,31 @@
-package com.Finance_Pay.model.expenses;
+package com.Finance_Pay.model.financialManagements.expenses;
 
-import com.Finance_Pay.dto.ExpenseDTO;
-import com.Finance_Pay.enums.Type;
+import com.Finance_Pay.dto.FinancialManagementDTO;
+import com.Finance_Pay.enums.TypeOfCosts;
+import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Sme;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "expense")
-public class Expense {
+public class Expense extends FinancialManagement {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private double value;
     private Date date;
-    private String name;
 
     @ManyToOne
     private FisicalPerson fisicalPerson;
@@ -39,15 +34,15 @@ public class Expense {
     private Sme sme;
 
     @Enumerated(EnumType.ORDINAL)
-    private Type type;
+    private TypeOfCosts typeOfCosts;
 
-    public Expense(ExpenseDTO expenseDTO) {
-        this.id = expenseDTO.id();
-        this.value = expenseDTO.value();
-        this.date = expenseDTO.date();
-        this.name = expenseDTO.name();
+    public Expense(FinancialManagementDTO financialManagementDTO) {
+        this.id = financialManagementDTO.id();
+        this.value = financialManagementDTO.value();
+        this.name = financialManagementDTO.name();
+        this.date = getDate();
         this.fisicalPerson = getFisicalPerson();
         this.sme = getSme();
-        this.type = getType();
+        this.typeOfCosts = getTypeOfCosts();
     }
 }

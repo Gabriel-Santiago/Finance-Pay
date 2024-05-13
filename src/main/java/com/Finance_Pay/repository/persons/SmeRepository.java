@@ -1,8 +1,8 @@
 package com.Finance_Pay.repository.persons;
 
-import com.Finance_Pay.model.expenses.Expense;
-import com.Finance_Pay.model.goals.Goal;
-import com.Finance_Pay.model.persons.FisicalPerson;
+import com.Finance_Pay.model.financialManagements.earnings.Earning;
+import com.Finance_Pay.model.financialManagements.expenses.Expense;
+import com.Finance_Pay.model.financialManagements.goals.Goal;
 import com.Finance_Pay.model.persons.Sme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -20,8 +20,10 @@ public interface SmeRepository extends JpaRepository<Sme, Integer> {
 
     Sme findByPhone(String phone);
 
-    List<FisicalPerson> findByGoal(Goal goal);
+    List<Sme> findByGoal(Goal goal);
 
-    List<FisicalPerson> findByExpense(Expense expense);
+    List<Sme> findByExpense(Expense expense);
+
+    List<Sme> findByEarning(Earning earning);
 
 }
