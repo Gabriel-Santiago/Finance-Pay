@@ -15,6 +15,6 @@ public interface GoalRepository extends JpaRepository<Goal, Integer> {
 
     List<Goal> findByDayOfPurchase(Date dayOfPurchase);
 
-    Goal findByType(TypeOfCosts typeOfCosts);
+    List<Goal> findByType(TypeOfCosts typeOfCosts);
 
 }

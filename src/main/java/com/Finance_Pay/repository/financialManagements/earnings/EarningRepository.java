@@ -10,6 +10,6 @@ public interface EarningRepository extends JpaRepository<Earning, Integer> {
 
     List<Earning> findByName(String name);
 
-    Earning findByType(TypeOfIncomes typeOfIncomes);
+    List<Earning> findByType(TypeOfIncomes typeOfIncomes);
 
 }

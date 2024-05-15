@@ -15,6 +15,6 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
     List<Expense> findByName(String name);
 
-    Expense findByType(TypeOfCosts typeOfCosts);
+    List<Expense> findByType(TypeOfCosts typeOfCosts);
 
 }
