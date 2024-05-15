@@ -21,9 +21,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "legalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"crn"})})
-public class Sme extends Person {
+public class Mei extends Person {
 
-    private long crn; // Company Registration Number
+    private long cnpj;
 
     @OneToMany
     private Goal goal;
@@ -37,7 +37,7 @@ public class Sme extends Person {
     @ManyToOne
     private FinancialConsultant financialConsultant;
 
-    public Sme(PersonDTO personDTO){
+    public Mei(PersonDTO personDTO){
         this.id = personDTO.id();
         this.name = personDTO.name();
         this.city = personDTO.city();
@@ -45,7 +45,7 @@ public class Sme extends Person {
         this.email = personDTO.email();
         this.password = personDTO.password();
         this.phone = personDTO.phone();
-        this.crn = getCrn();
+        this.cnpj = getCnpj();
         this.goal = getGoal();
         this.expense = getExpense();
         this.earning = getEarning();

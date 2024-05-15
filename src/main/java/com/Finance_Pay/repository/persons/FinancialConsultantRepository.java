@@ -2,7 +2,7 @@ package com.Finance_Pay.repository.persons;
 
 import com.Finance_Pay.model.persons.FinancialConsultant;
 import com.Finance_Pay.model.persons.FisicalPerson;
-import com.Finance_Pay.model.persons.Sme;
+import com.Finance_Pay.model.persons.Mei;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ public interface FinancialConsultantRepository extends JpaRepository<FinancialCo
 
     List<FinancialConsultant> findByFisicalPerson(FisicalPerson fisicalPerson);
 
-    List<FinancialConsultant> findBySme(Sme sme);
+    List<FinancialConsultant> findBySme(Mei mei);
 
     FinancialConsultant findByName(String name);
 

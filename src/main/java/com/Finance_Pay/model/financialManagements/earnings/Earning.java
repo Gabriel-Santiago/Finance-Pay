@@ -4,7 +4,7 @@ import com.Finance_Pay.dto.FinancialManagementDTO;
 import com.Finance_Pay.enums.TypeOfIncomes;
 import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
-import com.Finance_Pay.model.persons.Sme;
+import com.Finance_Pay.model.persons.Mei;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -29,7 +29,7 @@ public class Earning extends FinancialManagement {
     private FisicalPerson fisicalPerson;
 
     @ManyToOne
-    private Sme sme;
+    private Mei mei;
 
     @Enumerated(EnumType.ORDINAL)
     private TypeOfIncomes typeOfIncomes;
@@ -40,7 +40,7 @@ public class Earning extends FinancialManagement {
         this.name = financialManagementDTO.name();
         this.description = getDescription();
         this.fisicalPerson = getFisicalPerson();
-        this.sme = getSme();
+        this.mei = getMei();
         this.typeOfIncomes = getTypeOfIncomes();
     }
 }

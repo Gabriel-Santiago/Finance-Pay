@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "fisicalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"itr"})})
 public class FisicalPerson extends Person {
 
-    private long itr; // Individual Taxpayer Registration
+    private long cpf;
     private int age;
 
     @OneToMany
@@ -45,7 +45,7 @@ public class FisicalPerson extends Person {
         this.email = personDTO.email();
         this.password = personDTO.password();
         this.phone = personDTO.phone();
-        this.itr = getItr();
+        this.cpf = getCpf();
         this.age = getAge();
         this.goal = getGoal();
         this.expense = getExpense();

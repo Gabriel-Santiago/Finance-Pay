@@ -23,7 +23,7 @@ public class FinancialConsultant extends Person {
     private List<FisicalPerson> fisicalPersons;
 
     @OneToMany
-    private List<Sme> smes;
+    private List<Mei> meis;
 
     public FinancialConsultant(PersonDTO personDTO){
         this.id = personDTO.id();
@@ -34,6 +34,6 @@ public class FinancialConsultant extends Person {
         this.password = personDTO.password();
         this.phone = personDTO.phone();
         this.fisicalPersons = getFisicalPersons();
-        this.smes = getSmes();
+        this.meis = getMeis();
     }
 }
