@@ -40,10 +40,10 @@ public class Mei extends Person {
     public Mei(PersonDTO personDTO){
         this.id = personDTO.id();
         this.name = personDTO.name();
+        this.cep = personDTO.cep();
         this.city = personDTO.city();
         this.state = personDTO.state();
         this.email = personDTO.email();
-        this.password = personDTO.password();
         this.phone = personDTO.phone();
         this.cnpj = getCnpj();
         this.goal = getGoal();

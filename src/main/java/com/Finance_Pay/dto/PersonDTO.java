@@ -13,9 +13,9 @@ public record PersonDTO(
         @Nonnull
         String state,
         @Nonnull
-        String email,
+        String cep,
         @Nonnull
-        String password,
+        String email,
         @Nonnull
         String phone
 ) {

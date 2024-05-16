@@ -17,19 +17,19 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String name;
+    protected String cep;
     protected String city;
     protected String state;
     protected String email;
-    protected String password;
     protected String phone;
 
     public Person (PersonDTO personDTO){
         this.id = personDTO.id();
         this.name = personDTO.name();
+        this.cep = personDTO.cep();
         this.city = personDTO.city();
         this.state = personDTO.state();
         this.email = personDTO.email();
-        this.password = personDTO.password();
         this.phone = personDTO.phone();
     }
 }
