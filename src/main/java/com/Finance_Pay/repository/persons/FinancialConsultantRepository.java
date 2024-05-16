@@ -13,7 +13,7 @@ public interface FinancialConsultantRepository extends JpaRepository<FinancialCo
 
     List<FinancialConsultant> findByFisicalPerson(FisicalPerson fisicalPerson);
 
-    List<FinancialConsultant> findBySme(Mei mei);
+    List<FinancialConsultant> findByMei(Mei mei);
 
     FinancialConsultant findByName(String name);
 
