@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "fisicalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"itr"})})
 public class FisicalPerson extends Person {
 
-    private long cpf;
+    private String cpf;
     private int age;
 
     @OneToMany

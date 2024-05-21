@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface FisicalPersonRepository extends JpaRepository<FisicalPerson, Integer> {
 
-    FisicalPerson findByCpf(long cpf);
+    FisicalPerson findByCpf(String cpf);
 
     FisicalPerson findByName(String name);
 
