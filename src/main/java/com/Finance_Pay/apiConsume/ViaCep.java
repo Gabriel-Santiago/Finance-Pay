@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class ViaCep {
 
-    public ViaCep(String cep) throws Exception {
+    public void viaCep(String cep) throws Exception {
 
         try {
             URL url = new URL("https://viacep.com.br/ws/" + cep + "/json/");

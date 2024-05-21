@@ -17,9 +17,11 @@ public class FinancialConsultantService {
 
     FinancialConsultantRepository financialConsultantRepository;
 
-    EmailValidation emailValidation = new EmailValidation();
+    EmailValidation emailValidation;
 
-    Authorization authorization = new Authorization();
+    Authorization authorization;
+
+    ViaCep viaCep;
 
     public void save(int id, FinancialConsultant financialConsultant) throws Exception {
         if(id != 0){
@@ -27,7 +29,7 @@ public class FinancialConsultantService {
         }
         emailValidation.emailValidation(financialConsultant.getEmail());
         financialConsultant.setPassword(authorization.encoder().encode(financialConsultant.getPassword()));
-        new ViaCep(financialConsultant.getCep());
+        viaCep.viaCep(financialConsultant.getCep());
         financialConsultantRepository.save(financialConsultant);
     }
 

@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "legalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"crn"})})
 public class Mei extends Person {
 
-    private long cnpj;
+    private String cnpj;
 
     @OneToMany
     private Goal goal;

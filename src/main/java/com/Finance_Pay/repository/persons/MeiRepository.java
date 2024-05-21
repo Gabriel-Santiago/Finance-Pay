@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface MeiRepository extends JpaRepository<Mei, Integer> {
 
-    Mei findByCnpj(long cnpj);
+    Mei findByCnpj(String cnpj);
 
     Mei findByName(String name);
 
