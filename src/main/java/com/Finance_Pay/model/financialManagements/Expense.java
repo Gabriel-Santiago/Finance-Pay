@@ -1,8 +1,6 @@
-package com.Finance_Pay.model.financialManagements.expenses;
+package com.Finance_Pay.model.financialManagements;
 
-import com.Finance_Pay.dto.FinancialManagementDTO;
 import com.Finance_Pay.enums.TypeOfCosts;
-import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Mei;
 import jakarta.persistence.Entity;
@@ -17,14 +15,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "expense")
-public class Expense extends FinancialManagement {
+public class Expense{
 
+    private Integer id;
+    private double value;
+    private String name;
     private Date date;
 
     @ManyToOne
@@ -35,14 +36,4 @@ public class Expense extends FinancialManagement {
 
     @Enumerated(EnumType.ORDINAL)
     private TypeOfCosts typeOfCosts;
-
-    public Expense(FinancialManagementDTO financialManagementDTO) {
-        this.id = financialManagementDTO.id();
-        this.value = financialManagementDTO.value();
-        this.name = financialManagementDTO.name();
-        this.date = getDate();
-        this.fisicalPerson = getFisicalPerson();
-        this.mei = getMei();
-        this.typeOfCosts = getTypeOfCosts();
-    }
 }

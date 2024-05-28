@@ -2,9 +2,9 @@ package com.Finance_Pay.service.persons;
 
 import com.Finance_Pay.apiConsume.ViaCep;
 import com.Finance_Pay.exception.EmailInvalidException;
-import com.Finance_Pay.model.financialManagements.earnings.Earning;
-import com.Finance_Pay.model.financialManagements.expenses.Expense;
-import com.Finance_Pay.model.financialManagements.goals.Goal;
+import com.Finance_Pay.model.financialManagements.Earning;
+import com.Finance_Pay.model.financialManagements.Expense;
+import com.Finance_Pay.model.financialManagements.Goal;
 import com.Finance_Pay.model.persons.FinancialConsultant;
 import com.Finance_Pay.model.persons.Mei;
 import com.Finance_Pay.repository.persons.FinancialConsultantRepository;

@@ -1,46 +1,17 @@
 package com.Finance_Pay.apiConsume;
 
-import com.Finance_Pay.model.persons.Person;
-import com.google.gson.Gson;
+import org.springframework.web.client.RestTemplate;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class ViaCep {
 
-    public void viaCep(String cep) throws Exception {
+    private static final String VIA_CEP_URL = "https://viacep.com.br/ws/";
 
-        try {
-            URL url = new URL("https://viacep.com.br/ws/" + cep + "/json/");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
+    public Address viaCep(String cep) throws Exception {
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                reader.close();
-
-                Gson gson = new Gson();
-                Address address = gson.fromJson(response.toString(), Address.class);
-
-                Person person = new Person();
-                person.setCep(address.getCep());
-                person.setCity(address.getLocalidade());
-                person.setState(address.getUf());
-            } else {
-                throw new Exception("Erro ao obter os dados do ViaCEP. Código de resposta: " + responseCode);
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
+        RestTemplate restTemplate = new RestTemplate();
+        String url = VIA_CEP_URL + cep + "/json";
+        return restTemplate.getForObject(url, Address.class);
     }
 }
 

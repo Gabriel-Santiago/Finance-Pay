@@ -1,8 +1,6 @@
-package com.Finance_Pay.model.financialManagements.goals;
+package com.Finance_Pay.model.financialManagements;
 
-import com.Finance_Pay.dto.FinancialManagementDTO;
 import com.Finance_Pay.enums.TypeOfCosts;
-import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Mei;
 import jakarta.persistence.Entity;
@@ -17,14 +15,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "goal")
-public class Goal extends FinancialManagement {
+public class Goal{
 
+    private Integer id;
+    private double value;
+    private String name;
     private String description;
     private Date dayOfPurchase;
 
@@ -36,15 +37,4 @@ public class Goal extends FinancialManagement {
 
     @Enumerated(EnumType.ORDINAL)
     private TypeOfCosts typeOfCosts;
-
-    public Goal(FinancialManagementDTO financialManagementDTO) {
-        this.id = financialManagementDTO.id();
-        this.value = financialManagementDTO.value();
-        this.dayOfPurchase = getDayOfPurchase();
-        this.name = financialManagementDTO.name();
-        this.description = getDescription();
-        this.fisicalPerson = getFisicalPerson();
-        this.mei = getMei();
-        this.typeOfCosts = getTypeOfCosts();
-    }
 }

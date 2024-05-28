@@ -1,9 +1,8 @@
 package com.Finance_Pay.model.persons;
 
-import com.Finance_Pay.dto.PersonDTO;
-import com.Finance_Pay.model.financialManagements.earnings.Earning;
-import com.Finance_Pay.model.financialManagements.expenses.Expense;
-import com.Finance_Pay.model.financialManagements.goals.Goal;
+import com.Finance_Pay.model.financialManagements.Earning;
+import com.Finance_Pay.model.financialManagements.Expense;
+import com.Finance_Pay.model.financialManagements.Goal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,42 +13,35 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
+import java.util.List;
+
+@EqualsAndHashCode()
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "fisicalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"itr"})})
-public class FisicalPerson extends Person {
+@Table(name = "fisicalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf"})})
+public class FisicalPerson{
 
+    private Integer id;
+    private String name;
+    private String cep;
+    private String city;
+    private String state;
+    private String email;
+    private String phone;
     private String cpf;
     private int age;
 
     @OneToMany
-    private Goal goal;
+    private List<Goal> goals;
 
     @OneToMany
-    private Expense expense;
+    private List<Expense> expenses;
 
     @OneToMany
-    private Earning earning;
+    private List<Earning> earnings;
 
     @ManyToOne
     private FinancialConsultant financialConsultant;
-
-    public FisicalPerson(PersonDTO personDTO){
-        this.id = personDTO.id();
-        this.name = personDTO.name();
-        this.cep = personDTO.cep();
-        this.city = personDTO.city();
-        this.state = personDTO.state();
-        this.email = personDTO.email();
-        this.phone = personDTO.phone();
-        this.cpf = getCpf();
-        this.age = getAge();
-        this.goal = getGoal();
-        this.expense = getExpense();
-        this.earning = getEarning();
-        this.financialConsultant = getFinancialConsultant();
-    }
 }

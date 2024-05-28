@@ -1,10 +1,8 @@
 package com.Finance_Pay.model.persons;
 
-
-import com.Finance_Pay.dto.PersonDTO;
-import com.Finance_Pay.model.financialManagements.earnings.Earning;
-import com.Finance_Pay.model.financialManagements.expenses.Expense;
-import com.Finance_Pay.model.financialManagements.goals.Goal;
+import com.Finance_Pay.model.financialManagements.Earning;
+import com.Finance_Pay.model.financialManagements.Expense;
+import com.Finance_Pay.model.financialManagements.Goal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -15,40 +13,34 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
+import java.util.List;
+
+@EqualsAndHashCode()
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "legalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"crn"})})
-public class Mei extends Person {
+@Table(name = "legalPerson", uniqueConstraints = {@UniqueConstraint(columnNames = {"cnpj"})})
+public class Mei{
 
+    private Integer id;
+    private String name;
+    private String cep;
+    private String city;
+    private String state;
+    private String email;
+    private String phone;
     private String cnpj;
 
     @OneToMany
-    private Goal goal;
+    private List<Goal> goals;
 
     @OneToMany
-    private Expense expense;
+    private List<Expense> expenses;
 
     @OneToMany
-    private Earning earning;
+    private List<Earning> earnings;
 
     @ManyToOne
     private FinancialConsultant financialConsultant;
-
-    public Mei(PersonDTO personDTO){
-        this.id = personDTO.id();
-        this.name = personDTO.name();
-        this.cep = personDTO.cep();
-        this.city = personDTO.city();
-        this.state = personDTO.state();
-        this.email = personDTO.email();
-        this.phone = personDTO.phone();
-        this.cnpj = getCnpj();
-        this.goal = getGoal();
-        this.expense = getExpense();
-        this.earning = getEarning();
-        this.financialConsultant = getFinancialConsultant();
-    }
 }

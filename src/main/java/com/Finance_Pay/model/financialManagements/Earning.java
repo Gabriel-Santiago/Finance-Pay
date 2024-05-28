@@ -1,8 +1,6 @@
-package com.Finance_Pay.model.financialManagements.earnings;
+package com.Finance_Pay.model.financialManagements;
 
-import com.Finance_Pay.dto.FinancialManagementDTO;
 import com.Finance_Pay.enums.TypeOfIncomes;
-import com.Finance_Pay.model.financialManagements.FinancialManagement;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Mei;
 import jakarta.persistence.Entity;
@@ -15,14 +13,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "earning")
-public class Earning extends FinancialManagement {
+public class Earning{
 
+    private Integer id;
+    private double value;
+    private String name;
     private String description;
 
     @ManyToOne
@@ -33,14 +34,4 @@ public class Earning extends FinancialManagement {
 
     @Enumerated(EnumType.ORDINAL)
     private TypeOfIncomes typeOfIncomes;
-
-    public Earning(FinancialManagementDTO financialManagementDTO){
-        this.id = financialManagementDTO.id();
-        this.value = financialManagementDTO.value();
-        this.name = financialManagementDTO.name();
-        this.description = getDescription();
-        this.fisicalPerson = getFisicalPerson();
-        this.mei = getMei();
-        this.typeOfIncomes = getTypeOfIncomes();
-    }
 }

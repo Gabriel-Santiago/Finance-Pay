@@ -1,8 +1,8 @@
 package com.Finance_Pay.repository.persons;
 
-import com.Finance_Pay.model.financialManagements.earnings.Earning;
-import com.Finance_Pay.model.financialManagements.expenses.Expense;
-import com.Finance_Pay.model.financialManagements.goals.Goal;
+import com.Finance_Pay.model.financialManagements.Earning;
+import com.Finance_Pay.model.financialManagements.Expense;
+import com.Finance_Pay.model.financialManagements.Goal;
 import com.Finance_Pay.model.persons.Mei;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

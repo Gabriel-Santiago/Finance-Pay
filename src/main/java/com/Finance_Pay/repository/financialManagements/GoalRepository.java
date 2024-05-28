@@ -1,7 +1,7 @@
-package com.Finance_Pay.repository.financialManagements.goals;
+package com.Finance_Pay.repository.financialManagements;
 
 import com.Finance_Pay.enums.TypeOfCosts;
-import com.Finance_Pay.model.financialManagements.goals.Goal;
+import com.Finance_Pay.model.financialManagements.Goal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

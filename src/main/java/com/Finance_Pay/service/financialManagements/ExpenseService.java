@@ -1,10 +1,10 @@
-package com.Finance_Pay.service.financialManagements.expenses;
+package com.Finance_Pay.service.financialManagements;
 
 import com.Finance_Pay.enums.TypeOfCosts;
-import com.Finance_Pay.model.financialManagements.expenses.Expense;
+import com.Finance_Pay.model.financialManagements.Expense;
 import com.Finance_Pay.model.persons.FisicalPerson;
 import com.Finance_Pay.model.persons.Mei;
-import com.Finance_Pay.repository.financialManagements.expenses.ExpenseRepository;
+import com.Finance_Pay.repository.financialManagements.ExpenseRepository;
 import com.Finance_Pay.repository.persons.FisicalPersonRepository;
 import com.Finance_Pay.repository.persons.MeiRepository;
 import org.springframework.stereotype.Service;
