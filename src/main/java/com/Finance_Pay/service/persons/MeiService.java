@@ -11,6 +11,7 @@ import com.Finance_Pay.repository.persons.FinancialConsultantRepository;
 import com.Finance_Pay.repository.persons.MeiRepository;
 import com.Finance_Pay.validations.CnpjValidation;
 import com.Finance_Pay.validations.EmailValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @Service
 public class MeiService {
 
+    @Autowired
     MeiRepository meiRepository;
 
     FinancialConsultantRepository financialConsultantRepository;
