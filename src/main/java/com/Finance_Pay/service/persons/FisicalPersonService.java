@@ -7,6 +7,7 @@ import com.Finance_Pay.model.financialManagements.Expense;
 import com.Finance_Pay.model.financialManagements.Goal;
 import com.Finance_Pay.model.persons.FinancialConsultant;
 import com.Finance_Pay.model.persons.FisicalPerson;
+import com.Finance_Pay.model.persons.Mei;
 import com.Finance_Pay.repository.persons.FinancialConsultantRepository;
 import com.Finance_Pay.repository.persons.FisicalPersonRepository;
 import com.Finance_Pay.validations.CpfValidation;
@@ -78,16 +79,16 @@ public class FisicalPersonService {
         return fisicalPersonRepository.findByAge(age);
     }
 
-    public List<FisicalPerson> findByGoal(Goal goal){
-        return fisicalPersonRepository.findByGoal(goal);
+    public List<Goal> findByGoal(Mei mei){
+        return fisicalPersonRepository.findByGoal(mei);
     }
 
-    public List<FisicalPerson> findByExpense(Expense expense){
-        return fisicalPersonRepository.findByExpense(expense);
+    public List<Expense> findByExpense(Mei mei){
+        return fisicalPersonRepository.findByExpense(mei);
     }
 
-    public List<FisicalPerson> findByEarning(Earning earning){
-        return fisicalPersonRepository.findByEarning(earning);
+    public List<Earning> findByEarning(Mei mei){
+        return fisicalPersonRepository.findByEarning(mei);
     }
 
     public void update(int id, FisicalPerson fisicalPerson){

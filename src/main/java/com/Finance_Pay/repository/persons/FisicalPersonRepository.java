@@ -4,6 +4,7 @@ import com.Finance_Pay.model.financialManagements.Earning;
 import com.Finance_Pay.model.financialManagements.Expense;
 import com.Finance_Pay.model.financialManagements.Goal;
 import com.Finance_Pay.model.persons.FisicalPerson;
+import com.Finance_Pay.model.persons.Mei;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,10 +23,10 @@ public interface FisicalPersonRepository extends JpaRepository<FisicalPerson, In
 
     List<FisicalPerson> findByAge(int age);
 
-    List<FisicalPerson> findByGoal(Goal goal);
+    List<Goal> findByGoal(Mei mei);
 
-    List<FisicalPerson> findByExpense(Expense expense);
+    List<Expense> findByExpense(Mei mei);
 
-    List<FisicalPerson> findByEarning(Earning earning);
+    List<Earning> findByEarning(Mei mei);
 
 }

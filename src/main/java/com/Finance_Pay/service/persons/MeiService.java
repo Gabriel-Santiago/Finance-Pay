@@ -73,16 +73,16 @@ public class MeiService {
         return meiRepository.findByPhone(phone);
     }
 
-    public List<Mei> findByGoal(Goal goal){
-        return meiRepository.findByGoal(goal);
+    public List<Goal> findByGoal(Mei mei){
+        return meiRepository.findByGoal(mei);
     }
 
-    public List<Mei> findByExpense(Expense expense){
-        return meiRepository.findByExpense(expense);
+    public List<Expense> findByExpense(Mei mei){
+        return meiRepository.findByExpense(mei);
     }
 
-    public List<Mei> findByEarning(Earning earning){
-        return meiRepository.findByEarning(earning);
+    public List<Earning> findByEarning(Mei mei){
+        return meiRepository.findByEarning(mei);
     }
 
     public void update(int id, Mei mei){

@@ -20,10 +20,10 @@ public interface MeiRepository extends JpaRepository<Mei, Integer> {
 
     Mei findByPhone(String phone);
 
-    List<Mei> findByGoal(Goal goal);
+    List<Goal> findByGoal(Mei mei);
 
-    List<Mei> findByExpense(Expense expense);
+    List<Expense> findByExpense(Mei mei);
 
-    List<Mei> findByEarning(Earning earning);
+    List<Earning> findByEarning(Mei mei);
 
 }
