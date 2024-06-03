@@ -14,22 +14,30 @@ import com.Finance_Pay.validations.EmailValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MeiService {
 
+    private final MeiRepository meiRepository;
+    private final FinancialConsultantRepository financialConsultantRepository;
+    private final EmailValidation emailValidation;
+    private final CnpjValidation cnpjValidation;
+    private final ViaCep viaCep;
+
     @Autowired
-    MeiRepository meiRepository;
-
-    FinancialConsultantRepository financialConsultantRepository;
-
-    EmailValidation emailValidation;
-
-    CnpjValidation cnpjValidation;
-
-    ViaCep viaCep;
+    public MeiService(MeiRepository meiRepository,
+                      FinancialConsultantRepository financialConsultantRepository,
+                      EmailValidation emailValidation,
+                      CnpjValidation cnpjValidation,
+                      ViaCep viaCep) {
+        this.meiRepository = meiRepository;
+        this.financialConsultantRepository = financialConsultantRepository;
+        this.emailValidation = emailValidation;
+        this.cnpjValidation = cnpjValidation;
+        this.viaCep = viaCep;
+    }
 
     public void save(int financialConsultantId, Mei mei) throws Exception{
         FinancialConsultant financialConsultant = financialConsultantRepository.findById(financialConsultantId)
@@ -45,12 +53,11 @@ public class MeiService {
 
     public Mei find(int id){
         if(id < 1){
-            return null;
+            throw new IllegalArgumentException("ID must be greater than zero");
         }
 
-        Optional<Mei> mei = meiRepository.findById(id);
-
-        return mei.orElse(null);
+        return meiRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mei not found with id " + id));
     }
 
     public List<Mei> findAll(){
@@ -76,23 +83,34 @@ public class MeiService {
     }
 
     public List<Goal> findByGoal(Mei mei){
-        return meiRepository.findByGoal(mei);
+        List<Goal> goals = meiRepository.findByGoal(mei);
+        return goals != null ? goals : new ArrayList<>();
     }
 
     public List<Expense> findByExpense(Mei mei){
-        return meiRepository.findByExpense(mei);
+        List<Expense> expenses = meiRepository.findByExpense(mei);
+        return expenses != null ? expenses : new ArrayList<>();
     }
 
     public List<Earning> findByEarning(Mei mei){
-        return meiRepository.findByEarning(mei);
+        List<Earning> earnings = meiRepository.findByEarning(mei);
+        return earnings != null ? earnings : new ArrayList<>();
     }
 
     public void update(int id, Mei mei){
+        if(!meiRepository.existsById(id)){
+            throw new RuntimeException("Mei not found with id " + id);
+        }
+
         mei.setId(id);
         meiRepository.save(mei);
     }
 
     public void delete(int id){
+        if(!meiRepository.existsById(id)){
+            throw new RuntimeException("Mei not found with id " + id);
+        }
+
         Mei mei = find(id);
         meiRepository.delete(mei);
     }

@@ -7,6 +7,7 @@ import com.Finance_Pay.model.persons.Mei;
 import com.Finance_Pay.repository.financialManagements.EarningRepository;
 import com.Finance_Pay.repository.persons.FisicalPersonRepository;
 import com.Finance_Pay.repository.persons.MeiRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,18 @@ import java.util.Optional;
 @Service
 public class EarningService {
 
-    EarningRepository earningRepository;
+    private final EarningRepository earningRepository;
+    private final MeiRepository meiRepository;
+    private final FisicalPersonRepository fisicalPersonRepository;
 
-    MeiRepository meiRepository;
-
-    FisicalPersonRepository fisicalPersonRepository;
+    @Autowired
+    public EarningService(EarningRepository earningRepository,
+                          MeiRepository meiRepository,
+                          FisicalPersonRepository fisicalPersonRepository) {
+        this.earningRepository = earningRepository;
+        this.meiRepository = meiRepository;
+        this.fisicalPersonRepository = fisicalPersonRepository;
+    }
 
     public void saveByMei(int id, Earning earning){
         Optional<Mei> optionalMei = meiRepository.findById(id);

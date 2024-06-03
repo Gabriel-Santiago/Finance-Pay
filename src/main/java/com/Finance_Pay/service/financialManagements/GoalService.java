@@ -7,6 +7,7 @@ import com.Finance_Pay.model.persons.Mei;
 import com.Finance_Pay.repository.financialManagements.GoalRepository;
 import com.Finance_Pay.repository.persons.FisicalPersonRepository;
 import com.Finance_Pay.repository.persons.MeiRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,11 +17,18 @@ import java.util.Optional;
 @Service
 public class GoalService {
 
-    GoalRepository goalRepository;
+    private final GoalRepository goalRepository;
+    private final MeiRepository meiRepository;
+    private final FisicalPersonRepository fisicalPersonRepository;
 
-    MeiRepository meiRepository;
-
-    FisicalPersonRepository fisicalPersonRepository;
+    @Autowired
+    public GoalService(GoalRepository goalRepository,
+                       MeiRepository meiRepository,
+                       FisicalPersonRepository fisicalPersonRepository) {
+        this.goalRepository = goalRepository;
+        this.meiRepository = meiRepository;
+        this.fisicalPersonRepository = fisicalPersonRepository;
+    }
 
     public void saveByMei(int id, Goal goal){
         Optional<Mei> optionalMei = meiRepository.findById(id);

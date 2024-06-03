@@ -10,20 +10,26 @@ import com.Finance_Pay.validations.EmailValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FinancialConsultantService {
 
+    private final FinancialConsultantRepository financialConsultantRepository;
+    private final EmailValidation emailValidation;
+    private final Authorization authorization;
+    private final ViaCep viaCep;
+
     @Autowired
-    FinancialConsultantRepository financialConsultantRepository;
-
-    EmailValidation emailValidation;
-
-    Authorization authorization;
-
-    ViaCep viaCep;
+    public FinancialConsultantService(FinancialConsultantRepository financialConsultantRepository,
+                                      EmailValidation emailValidation,
+                                      Authorization authorization, ViaCep viaCep) {
+        this.financialConsultantRepository = financialConsultantRepository;
+        this.emailValidation = emailValidation;
+        this.authorization = authorization;
+        this.viaCep = viaCep;
+    }
 
     public void save(int id, FinancialConsultant financialConsultant) throws Exception {
         if(id != 0){
@@ -37,12 +43,11 @@ public class FinancialConsultantService {
 
     public FinancialConsultant find(int id){
         if(id < 1){
-            return null;
+            throw new IllegalArgumentException("ID must be greater than zero");
         }
 
-        Optional<FinancialConsultant> financialConsultant = financialConsultantRepository.findById(id);
-
-        return financialConsultant.orElse(null);
+        return financialConsultantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Financial Consultant not found with id " + id));
     }
 
     public List<FinancialConsultant> findAll(){
@@ -50,11 +55,13 @@ public class FinancialConsultantService {
     }
 
     public List<FisicalPerson> findByFisicalPerson(FinancialConsultant financialConsultant){
-        return financialConsultantRepository.findByFisicalPerson(financialConsultant);
+        List<FisicalPerson> fisicalPersonList = financialConsultantRepository.findByFisicalPerson(financialConsultant);
+        return fisicalPersonList != null ? fisicalPersonList : new ArrayList<>();
     }
 
     public List<Mei> findByMei(FinancialConsultant financialConsultant){
-        return financialConsultantRepository.findByMei(financialConsultant);
+        List<Mei> meiList = financialConsultantRepository.findByMei(financialConsultant);
+        return meiList != null ? meiList : new ArrayList<>();
     }
 
     public List<FinancialConsultant> findByCity(String city){
@@ -70,6 +77,10 @@ public class FinancialConsultantService {
     }
 
     public void delete(int id){
+        if(!financialConsultantRepository.existsById(id)){
+            throw new RuntimeException("Financial Consultant not found with id " + id);
+        }
+
         FinancialConsultant financialConsultant = find(id);
         financialConsultantRepository.delete(financialConsultant);
     }
