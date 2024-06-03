@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface FinancialConsultantRepository extends JpaRepository<FinancialConsultant, Integer> {
 
-    List<FinancialConsultant> findByFisicalPerson(FisicalPerson fisicalPerson);
+    List<FisicalPerson> findByFisicalPerson(FinancialConsultant financialConsultant);
 
-    List<FinancialConsultant> findByMei(Mei mei);
+    List<Mei> findByMei(FinancialConsultant financialConsultant);
 
     FinancialConsultant findByName(String name);
 

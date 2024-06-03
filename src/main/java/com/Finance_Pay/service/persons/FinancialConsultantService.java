@@ -7,6 +7,7 @@ import com.Finance_Pay.model.persons.Mei;
 import com.Finance_Pay.repository.persons.FinancialConsultantRepository;
 import com.Finance_Pay.security.Authorization;
 import com.Finance_Pay.validations.EmailValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @Service
 public class FinancialConsultantService {
 
+    @Autowired
     FinancialConsultantRepository financialConsultantRepository;
 
     EmailValidation emailValidation;
@@ -47,12 +49,12 @@ public class FinancialConsultantService {
         return financialConsultantRepository.findAll();
     }
 
-    public List<FinancialConsultant> findByFisicalPerson(FisicalPerson fisicalPerson){
-        return financialConsultantRepository.findByFisicalPerson(fisicalPerson);
+    public List<FisicalPerson> findByFisicalPerson(FinancialConsultant financialConsultant){
+        return financialConsultantRepository.findByFisicalPerson(financialConsultant);
     }
 
-    public List<FinancialConsultant> findByMei(Mei mei){
-        return financialConsultantRepository.findByMei(mei);
+    public List<Mei> findByMei(FinancialConsultant financialConsultant){
+        return financialConsultantRepository.findByMei(financialConsultant);
     }
 
     public List<FinancialConsultant> findByCity(String city){
@@ -65,11 +67,6 @@ public class FinancialConsultantService {
 
     public FinancialConsultant findByName(String name){
         return financialConsultantRepository.findByName(name);
-    }
-
-    public void update(int id, FinancialConsultant financialConsultant){
-        financialConsultant.setId(id);
-        financialConsultantRepository.save(financialConsultant);
     }
 
     public void delete(int id){
