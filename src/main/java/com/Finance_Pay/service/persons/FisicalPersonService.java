@@ -87,18 +87,18 @@ public class FisicalPersonService {
         return fisicalPersonRepository.findByAge(age);
     }
 
-    public List<Goal> findByGoal(Mei mei){
-        List<Goal> goals = fisicalPersonRepository.findByGoal(mei);
+    public List<Goal> findByGoal(FisicalPerson fisicalPerson){
+        List<Goal> goals = fisicalPersonRepository.findByGoal(fisicalPerson);
         return goals != null ? goals : new ArrayList<>();
     }
 
-    public List<Expense> findByExpense(Mei mei){
-        List<Expense> expenses = fisicalPersonRepository.findByExpense(mei);
+    public List<Expense> findByExpense(FisicalPerson fisicalPerson){
+        List<Expense> expenses = fisicalPersonRepository.findByExpense(fisicalPerson);
         return expenses != null ? expenses : new ArrayList<>();
     }
 
-    public List<Earning> findByEarning(Mei mei){
-        List<Earning> earnings = fisicalPersonRepository.findByEarning(mei);
+    public List<Earning> findByEarning(FisicalPerson fisicalPerson){
+        List<Earning> earnings = fisicalPersonRepository.findByEarning(fisicalPerson);
         return earnings != null ? earnings : new ArrayList<>();
     }
 

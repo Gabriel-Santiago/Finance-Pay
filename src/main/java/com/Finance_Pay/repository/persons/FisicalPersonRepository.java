@@ -23,10 +23,10 @@ public interface FisicalPersonRepository extends JpaRepository<FisicalPerson, In
 
     List<FisicalPerson> findByAge(int age);
 
-    List<Goal> findByGoal(Mei mei);
+    List<Goal> findByGoal(FisicalPerson fisicalPerson);
 
-    List<Expense> findByExpense(Mei mei);
+    List<Expense> findByExpense(FisicalPerson fisicalPerson);
 
-    List<Earning> findByEarning(Mei mei);
+    List<Earning> findByEarning(FisicalPerson fisicalPerson);
 
 }
