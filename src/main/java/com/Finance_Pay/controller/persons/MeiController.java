@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping
 public class MeiController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class MeiController {
         return new ResponseEntity<>(mei, mei != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping
+    @GetMapping(path = "/meis")
     public ResponseEntity<List<Mei>> findAll(){
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
