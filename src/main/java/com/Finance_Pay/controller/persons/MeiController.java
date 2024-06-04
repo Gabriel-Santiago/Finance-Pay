@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @RestController
-@RequestMapping("/meis")
+@RequestMapping("")
 public class MeiController {
 
     @Autowired
     MeiService service;
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/meis/{id}")
     public ResponseEntity<Mei> find(@PathVariable("id") Integer id){
         Mei mei = service.find(id);
 
@@ -39,7 +39,7 @@ public class MeiController {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{meiId}/goal")
+    @GetMapping(path = "/meis/{meiId}/goal")
     public ResponseEntity<List<Goal>> findByGoal(@PathVariable("meiId")Integer meiId){
         if(meiId == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -53,7 +53,7 @@ public class MeiController {
         return new ResponseEntity<>(goals, !goals.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/{meiId}/expense")
+    @GetMapping(path = "/meis/{meiId}/expense")
     public ResponseEntity<List<Expense>> findByExpense(@PathVariable("meiId")Integer meiId){
         if(meiId == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -67,7 +67,7 @@ public class MeiController {
         return new ResponseEntity<>(expenses, !expenses.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/{meiId}/earning")
+    @GetMapping(path = "/meis/{meiId}/earning")
     public ResponseEntity<List<Earning>> findByEarning(@PathVariable("meiId")Integer meiId){
         if(meiId == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -81,7 +81,7 @@ public class MeiController {
         return new ResponseEntity<>(earnings, !earnings.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/meis/search")
     public ResponseEntity<Mei> findByAttribute(@RequestParam(required = false) String cnpj,
                                                @RequestParam(required = false) String name,
                                                @RequestParam(required = false) String phone,
@@ -106,13 +106,13 @@ public class MeiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/meis/{id}")
     public ResponseEntity<Void> update(@PathVariable("id")Integer id, @RequestBody Mei mei){
         service.update(id, mei);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/meis/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id")Integer id){
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
